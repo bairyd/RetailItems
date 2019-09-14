@@ -9,7 +9,7 @@ namespace Example.Application.API.Controllers
     [ApiController]
     public class CitiesController : ControllerBase
     {
-        private ICityService _cityService;
+        private readonly ICityService _cityService;
 
         public CitiesController(ICityService cityService)
         {

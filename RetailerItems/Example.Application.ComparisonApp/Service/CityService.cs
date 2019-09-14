@@ -30,7 +30,7 @@ namespace Example.Application.ComparisonApp.Service
 
         public ServiceResponse AddCity(ServiceRequest request)
         {
-            var result = _repository.Create(new City {Id = 123, Name = "Cape Town"});
+            var result = _repository.Create(new City {Id = 123L, Name = "Cape Town"});
             return new ServiceResponse(result, true);
         }
     }

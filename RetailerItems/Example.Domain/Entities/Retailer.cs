@@ -10,6 +10,7 @@ namespace Example.Domain.Entities
         public string ContactNumber { get; set; }
         public string WebsiteUrl { get; set; }
         public string TradingHours { get; set; }
-        public IList<Item> Items { get; set; }
+        
+        public ICollection<RetailerItem> RetailerItems { get; set; }
     }
 }

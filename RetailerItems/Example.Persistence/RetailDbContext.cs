@@ -17,6 +17,19 @@ namespace Example.Persistence
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            
+            builder.Entity<RetailerItem>()
+                .HasKey(pt => new { pt.ItemId, pt.RetailerId });
+
+            builder.Entity<RetailerItem>()
+                .HasOne(pt => pt.Item)
+                .WithMany(p => p.RetailerItems)
+                .HasForeignKey(pt => pt.ItemId);
+
+            builder.Entity<RetailerItem>()
+                .HasOne(pt => pt.Retailer)
+                .WithMany(t => t.RetailerItems)
+                .HasForeignKey(pt => pt.RetailerId);
         }
         
     }

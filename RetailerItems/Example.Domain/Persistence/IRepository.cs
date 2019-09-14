@@ -4,7 +4,7 @@ using Example.Domain.Model;
 
 namespace Example.Domain.Persistence
 {
-    public interface IRepository<T> where T : Entity
+    public interface IRepository<T> where T : class
     {
         IQueryable<T> GetAll();
  
