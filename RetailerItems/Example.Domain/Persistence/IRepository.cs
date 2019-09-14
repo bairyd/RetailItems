@@ -1,12 +1,19 @@
-﻿using Example.Domain.Model;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Example.Domain.Model;
 
 namespace Example.Domain.Persistence
 {
     public interface IRepository<T> where T : Entity
     {
-        T Get(int? id);
-        void Insert(T entity);
-        void Update(T entity);
-        void Delete(int id);
+        IQueryable<T> GetAll();
+ 
+        Task<T> GetById(int id);
+ 
+        Task Create(T entity);
+ 
+        Task Update(int id, T entity);
+ 
+        Task Delete(int id);
     }
 }

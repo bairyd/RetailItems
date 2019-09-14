@@ -22,8 +22,10 @@ namespace Example.Application.API.Controllers
         }
 
         [HttpPost]
-        public void SaveCity([FromBody] string value)
+        public ActionResult SaveCity([FromBody] string value)
         {
+            var result = _cityService.AddCity(null);
+            return new JsonResult(result);
         }
 
         [HttpPut("{id}")]

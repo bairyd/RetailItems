@@ -17,19 +17,20 @@ namespace Example.Application.ComparisonApp.Service
 
         public ServiceResponse GetAllCities()
         {
-            var result = _repository.Get(null);
+            var result = _repository.GetAll();
             return new ServiceResponse(result, true);
         }
 
         public ServiceResponse GetCity(int cityId)
         {
-            var result = _repository.Get(cityId);
+            var result = _repository.GetById(cityId);
             return new ServiceResponse(result, true);
         }
 
         public ServiceResponse AddCity(ServiceRequest request)
         {
-            throw new System.NotImplementedException();
+            var result = _repository.Create(new City {Id = 123, Name = "Cape Town"});
+            return new ServiceResponse(result, true);
         }
     }
 }
