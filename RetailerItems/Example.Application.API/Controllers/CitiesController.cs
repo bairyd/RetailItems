@@ -1,4 +1,5 @@
-﻿using Example.Domain.Model.Response;
+﻿using Example.Domain.Entities;
+using Example.Domain.Model.Response;
 using Example.Domain.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +15,12 @@ namespace Example.Application.API.Controllers
         {
             _cityService = cityService;
         }
+        
+        [HttpGet]
+        public ActionResult<ServiceResponse> GetAllCities()
+        {
+            return _cityService.GetAllCities();
+        }
 
         [HttpGet("{id}")]
         public ActionResult<ServiceResponse> GetCity(int id)
@@ -22,7 +29,7 @@ namespace Example.Application.API.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveCity([FromBody] string value)
+        public ActionResult SaveCity([FromBody] City request)
         {
             var result = _cityService.AddCity(null);
             return new JsonResult(result);

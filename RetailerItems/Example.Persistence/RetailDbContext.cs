@@ -7,6 +7,7 @@ namespace Example.Persistence
     {
         public DbSet<Retailer> Retailers { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<City> Cities { get; set; }
         
         public RetailDbContext(DbContextOptions options)
             : base(options)

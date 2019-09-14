@@ -34,7 +34,7 @@ namespace Example.Application.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<RetailDbContext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("RetailDatabase")));
+                options => options.UseInMemoryDatabase(databaseName: "RetailDb"));
             services.AddScoped<ICityService, CityService>();
             services.AddScoped(typeof(IRepository<>), typeof(RetailRepository<>));
         }

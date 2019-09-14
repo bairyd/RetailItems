@@ -1,4 +1,5 @@
-﻿using Example.Domain.Entities;
+﻿using System.Linq;
+using Example.Domain.Entities;
 using Example.Domain.Model.Request;
 using Example.Domain.Model.Response;
 using Example.Domain.Persistence;
@@ -18,7 +19,7 @@ namespace Example.Application.ComparisonApp.Service
         public ServiceResponse GetAllCities()
         {
             var result = _repository.GetAll();
-            return new ServiceResponse(result, true);
+            return new ServiceResponse(result.FirstOrDefault(), true);
         }
 
         public ServiceResponse GetCity(int cityId)
