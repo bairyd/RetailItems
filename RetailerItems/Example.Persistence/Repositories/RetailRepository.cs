@@ -5,7 +5,7 @@ namespace Example.Persistence.Repositories
 {
     public class RetailRepository<T> : IRepository<T> where T : Entity
     {
-        public T Get(int id)
+        public T Get(int? id)
         {
             throw new System.NotImplementedException();
         }

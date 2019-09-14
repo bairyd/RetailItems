@@ -1,13 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Example.Domain.Model;
 
-namespace Example.Persistence.Entities
+namespace Example.Domain.Entities
 {
     public class Item : Entity
     {
-        [Key]
-        public int Id { get; set; }
-        
         [Required]
         [MaxLength(100)]
         public string Name { get; set; }

@@ -1,7 +1,10 @@
-﻿namespace Example.Domain.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Example.Domain.Model
 {
     public class Entity
     {
-//        public int Id { get; set; }
+        [Key]
+        public int Id { get; set; }
     }
 }

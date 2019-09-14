@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Example.Application.ComparisonApp.Service;
+using Example.Domain.Entities;
+using Example.Domain.Persistence;
+using Example.Domain.Service;
+using Example.Persistence.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +31,8 @@ namespace Example.Application.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddScoped<ICityService, CityService>();
+            services.AddScoped(typeof(IRepository<>), typeof(RetailRepository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
