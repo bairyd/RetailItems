@@ -6,11 +6,13 @@ using Example.Application.ComparisonApp.Service;
 using Example.Domain.Entities;
 using Example.Domain.Persistence;
 using Example.Domain.Service;
+using Example.Persistence;
 using Example.Persistence.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -31,6 +33,8 @@ namespace Example.Application.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddDbContext<RetailDbContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("RetailDatabase")));
             services.AddScoped<ICityService, CityService>();
             services.AddScoped(typeof(IRepository<>), typeof(RetailRepository<>));
         }

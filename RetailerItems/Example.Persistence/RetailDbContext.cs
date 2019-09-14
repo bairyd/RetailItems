@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Example.Persistence
 {
-    public class SqlLiteDbContext : DbContext
+    public class RetailDbContext : DbContext
     {
-        public SqlLiteDbContext(DbContextOptions<SqlLiteDbContext> options)
+        public RetailDbContext(DbContextOptions options)
             : base(options)
         {
         }
