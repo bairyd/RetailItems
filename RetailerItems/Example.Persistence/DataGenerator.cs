@@ -14,90 +14,99 @@ namespace Example.Persistence
             using (var context = new RetailDbContext(
                 serviceProvider.GetRequiredService<DbContextOptions<RetailDbContext>>()))
             {
-                // Look for any board games.
                 if (context.Cities.Any())
                 {
-                    return;   // Data was already seeded
+                    return;   
                 }
 
                 context.Cities.AddRange(
                     new City
                     {
-                        Id = 123L,
+                        Id = 1,
                         Name = "CPT"
                     },
                     new City
                     {
-                        Id = 567L,
+                        Id = 2,
                         Name = "JHB"
                     },
                     new City
                     {
-                        Id = 435L,
+                        Id = 3,
                         Name = "PTA"
                     }
                 );
-                Item item1 = new Item
+
+                var items = new[]
                 {
-                    Id = 1L,
-                    Name = "T-Shirt",
-                    Colour = "White",
-                    Cost = 200.00M,
-                    Size = "S",
-                    InStock = true
-                };
-                
-                Item item2 = new Item
-                {
-                    Id = 2L,
-                    Name = "Pants",
-                    Colour = "Black",
-                    Cost = 400.00M,
-                    Size = "M",
-                    InStock = true
-                };
-                
-                Item item3 = new Item
-                {
-                    Id = 3L,
-                    Name = "Shoes",
-                    Colour = "Yellow",
-                    Cost = 350.00M,
-                    Size = "S",
-                    InStock = false
-                };
-                
-                context.Retailers.AddRange(
-                    new Retailer()
+                    new Item
                     {
-                        Id = 1L,
+                        Id = 1,
+                        Name = "T-Shirt",
+                        Colour = "White",
+                        Cost = 200.00M,
+                        Size = "S",
+                        InStock = true
+                    },
+                    new Item
+                    {
+                        Id = 2,
+                        Name = "Pants",
+                        Colour = "Black",
+                        Cost = 400.00M,
+                        Size = "M",
+                        InStock = true
+                    },
+                    new Item
+                    {
+                        Id = 3,
+                        Name = "Shoes",
+                        Colour = "Yellow",
+                        Cost = 350.00M,
+                        Size = "S",
+                        InStock = false
+                    }
+                };
+
+                var retailers = new[]
+                {
+                    new Retailer
+                    {
+                        Id = 1,
                         Name = "Woolworths",
                         Address = "Some Place in the Western Cape",
                         ContactNumber = "021 123 2138",
                         TradingHours = "08:00 - 19:00",
-                        WebsiteUrl = "https://www.woolworths.com",
-                        RetailerItems = new List<RetailerItem>{item1, item2, item3}
+                        WebsiteUrl = "https://www.woolworths.com"
                     },
-                    new Retailer()
+                    new Retailer
                     {
-                        Id = 2L,
+                        Id = 2,
                         Name = "Zara",
                         Address = "Some Place in the JHB",
                         ContactNumber = "011 959 2345",
                         TradingHours = "08:00 - 19:00",
-                        WebsiteUrl = "https://www.zara.com",
-                        Items = new List<Item>{item1, item2}
+                        WebsiteUrl = "https://www.zara.com"
                     },
-                    new Retailer()
+                    new Retailer
                     {
-                        Id = 3L,
+                        Id = 3,
                         Name = "CottonOn",
                         Address = "Some Place in the PTA",
                         ContactNumber = "011 959 2345",
                         TradingHours = "08:00 - 19:00",
-                        WebsiteUrl = "https://www.cottonon.com",
-                        Items = new List<Item>{item1, item3}
+                        WebsiteUrl = "https://www.cottonon.com"
                     }
+                };
+                
+                context.AddRange(
+                       new RetailerItem {Retailer = retailers[0], Item = items[0]},
+                       new RetailerItem {Retailer = retailers[0], Item = items[1]},
+                       new RetailerItem {Retailer = retailers[0], Item = items[2]},
+                       new RetailerItem {Retailer = retailers[1], Item = items[1]},
+                       new RetailerItem {Retailer = retailers[1], Item = items[2]},
+                       new RetailerItem {Retailer = retailers[2], Item = items[0]},
+                       new RetailerItem {Retailer = retailers[2], Item = items[2]}
                 );
                 context.SaveChanges();
             }

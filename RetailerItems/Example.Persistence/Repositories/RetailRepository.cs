@@ -17,7 +17,7 @@ namespace Example.Persistence.Repositories
 
         public IQueryable<T> GetAll()
         {
-            return _dbContext.Set<T>().AsNoTracking();
+            return _dbContext.Set<T>().AsNoTracking().Include(x=> x);
         }
 
         public async Task<T> GetById(int id)

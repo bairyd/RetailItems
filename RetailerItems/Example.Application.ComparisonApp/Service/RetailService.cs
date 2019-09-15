@@ -7,30 +7,30 @@ using Example.Domain.Service;
 
 namespace Example.Application.ComparisonApp.Service
 {
-    public class CityService : ICityService
+    public class RetailService : IRetailerService
     {
-        private readonly IRepository<City> _repository;
+        private readonly IRepository<Retailer> _repository;
         
-        public CityService(IRepository<City> repository)
+        public RetailService(IRepository<Retailer> repository)
         {
             _repository = repository;
         }
 
-        public ServiceResponse GetAllCities()
+        public ServiceResponse GetAllRetailers()
         {
             var result = _repository.GetAll();
             return new ServiceResponse(result, true);
         }
 
-        public ServiceResponse GetCity(int cityId)
+        public ServiceResponse GetRetailer(int cityId)
         {
             var result = _repository.GetById(cityId);
             return new ServiceResponse(result, true);
         }
 
-        public ServiceResponse AddCity(ServiceRequest request)
+        public ServiceResponse AddRetailer(ServiceRequest request)
         {
-            var result = _repository.Create(new City {Id = 123L, Name = "Cape Town"});
+            var result = _repository.Create(new Retailer() {Id = 123L, Name = "Cape Town"});
             return new ServiceResponse(result, true);
         }
     }

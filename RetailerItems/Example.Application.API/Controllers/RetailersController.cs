@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Example.Domain.Model.Response;
+using Example.Domain.Service;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Example.Application.API.Controllers
 {
@@ -6,10 +8,16 @@ namespace Example.Application.API.Controllers
     [ApiController]
     public class RetailersController: ControllerBase
     {
-        [HttpGet("{id}")]
-        public ActionResult<string> GetCity(int id)
+        private readonly IRetailerService _retailerService;
+
+        public RetailersController(IRetailerService retailerService)
         {
-            return "Hello";
+            _retailerService = retailerService;
+        }
+        [HttpGet("{id}")]
+        public ActionResult<ServiceResponse> GetRetailer(int id)
+        {
+            return _retailerService.GetRetailer(id);
         }
 
         [HttpPost]
