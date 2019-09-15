@@ -1,0 +1,12 @@
+﻿{
+  "ApiRootUrl": "https://localhost:44369",
+  "Auth": {
+    "domain": "",
+    "clientId": "",
+    "callbackUrl": "",
+    "realm": "Username-Password-Authentication",
+    "apiAudience": "",
+    "scope": "openid email"
+  }
+
+}
