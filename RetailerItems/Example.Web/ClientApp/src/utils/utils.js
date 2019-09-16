@@ -1,5 +1,5 @@
 ﻿import atob from 'atob';
-import { Constants } from '../Constants/Constants'
+import { Constants } from '../constants/Constants'
 
 export const getIdToken = () => {
     const idToken = localStorage.getItem(Constants.API.Id_Token);

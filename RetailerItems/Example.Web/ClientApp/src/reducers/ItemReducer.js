@@ -1,6 +1,6 @@
 ﻿import {
     GET_ITEM_BEGIN, GET_ITEM_SUCCESS, GET_ITEM_FAILURE
-} from "../Constants/ActionTypes";
+} from "../constants/ActionTypes";
 
 const initialState = {
     item: {},

@@ -1,6 +1,6 @@
 ﻿import {
     GET_LOCATION_BEGIN, GET_LOCATION_SUCCESS, GET_LOCATION_FAILURE
-} from "../Constants/ActionTypes";
+} from "../constants/ActionTypes";
 
 const initialState = {
     location: {},

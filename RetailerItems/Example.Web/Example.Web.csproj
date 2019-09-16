@@ -19,8 +19,9 @@
         <Content Remove="$(SpaRoot)**" />
         <Content Include="ClientApp\src\actions\actionTypes.js" />
         <Content Include="ClientApp\src\actions\api\api.js" />
-        <Content Include="ClientApp\src\Constants\ActionTypes.js" />
-        <Content Include="ClientApp\src\Constants\Constants.js" />
+        <Content Include="ClientApp\src\actions\RetailActions\GetRetailersAction.js" />
+        <Content Include="ClientApp\src\constants\ActionTypes.js" />
+        <Content Include="ClientApp\src\constants\Constants.js" />
         <Content Include="ClientApp\src\middleware\api.js" />
         <Content Include="ClientApp\src\reducers\apiReducer.js" />
         <Content Include="ClientApp\src\reducers\index.js" />

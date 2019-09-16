@@ -1,6 +1,6 @@
 ﻿import {
     GET_RETAILER_BEGIN, GET_RETAILER_SUCCESS, GET_RETAILER_FAILURE
-} from "../Constants/ActionTypes";
+} from "../constants/ActionTypes";
 
 const initialState = {
     retailer: {},

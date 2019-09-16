@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import Table from "antd/lib/table";
 import 'antd/lib/table/style/css';
+import {getRetailer} from "../actions/RetailActions/GetRetailersAction";
 
 const Home = props => {
 
+    useEffect(() => {
+        getRetailer("1");
+    },[]);
+    
     const dataSource = [
         {
             key: '1',
@@ -38,4 +43,11 @@ const Home = props => {
 
 };
 
-export default connect()(Home);
+const mapDispatchToProps = {
+    // getRetailer
+};
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(Home);
