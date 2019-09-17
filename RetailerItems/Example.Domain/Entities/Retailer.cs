@@ -12,5 +12,7 @@ namespace Example.Domain.Entities
         public string TradingHours { get; set; }
         
         public ICollection<RetailerItem> RetailerItems { get; set; }
+        
+        public ICollection<RetailerLocation> RetailerLocations { get; set; }
     }
 }

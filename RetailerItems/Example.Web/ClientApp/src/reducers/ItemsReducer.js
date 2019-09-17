@@ -20,7 +20,7 @@ const itemsReducer = (state = initialState, { type, payload }) => {
         case GET_ITEMS_SUCCESS:
             return {
                 ...state,
-                item: {
+                items: {
                     ...payload
                 },
                 isLoading: false,

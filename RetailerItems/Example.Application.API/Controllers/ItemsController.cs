@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Example.Domain.Model.Response;
+using Example.Domain.Service;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Example.Application.API.Controllers
 {
@@ -6,10 +8,24 @@ namespace Example.Application.API.Controllers
     [ApiController]
     public class ItemsController: ControllerBase
     {
-        [HttpGet("{id}")]
-        public ActionResult<string> GetItem(int id)
+        private readonly IItemService _itemService;
+
+        public ItemsController(IItemService itemService)
         {
-            return "Hello";
+            _itemService = itemService;
+        }
+        
+        [HttpGet("{id}")]
+        public ActionResult<ServiceResponse> GetItem(int id)
+        {
+            return _itemService.GetItem(id);
+        }
+        
+        
+        [HttpGet("Location/{id}")]
+        public ActionResult<ServiceResponse> GetItemsByLocation(int id)
+        {
+            return _itemService.GetAllItemsByLocation(id);
         }
 
         [HttpPost]

@@ -3,7 +3,7 @@
 } from "../constants/ActionTypes";
 
 const initialState = {
-    locations: {},
+    locations: [],
     isLoading: false,
     error: null
 };

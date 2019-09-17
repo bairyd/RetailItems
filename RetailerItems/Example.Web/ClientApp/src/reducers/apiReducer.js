@@ -1,5 +1,5 @@
 ﻿import { API_START, API_END, ACCESS_DENIED, API_ERROR } from "../actions/actionTypes";
-import { isAuthenticated, renewUserSession, redirectLoggedOutUser } from './../actions/auth/index';
+// import { isAuthenticated, renewUserSession, redirectLoggedOutUser } from './../actions/auth/index';
 
 const initialState = {
     label: "",
@@ -10,11 +10,11 @@ const initialState = {
 export default function (state = initialState, { type, payload }) {
     switch (type) {
         case API_START:
-            if (isAuthenticated()) {
-                renewUserSession();
-            } else {
-                redirectLoggedOutUser();
-            }
+            // if (isAuthenticated()) {
+            //     renewUserSession();
+            // } else {
+            //     redirectLoggedOutUser();
+            // }
             return {
                 ...state,
                 label: payload,
