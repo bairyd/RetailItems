@@ -18,6 +18,7 @@ class Home extends Component {
                 ...InitialItems
             }
         };
+        this.handleOnChange = this.handleOnChange.bind(this);
         this.props.getLocations();
     }
 

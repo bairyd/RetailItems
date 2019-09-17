@@ -25,7 +25,8 @@ export const Items = (props) => {
     
     function transformData(items) {
         let tableRecords = [];
-        Object.keys(items).forEach(item => {
+        Object.keys(items).forEach(key => {
+            let item = items[key];
             let tableRecord = {
                 key: item.id,
                 name: item.name,

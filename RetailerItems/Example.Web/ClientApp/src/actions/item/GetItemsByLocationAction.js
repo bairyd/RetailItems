@@ -22,9 +22,8 @@ export function getItemsByLocation(locationId) {
         dispatch({
             type: API,
             payload: {
-                url: '/api/Items/Location',
+                url: `/api/Items/Location/${locationId}`,
                 method: "GET",
-                data: requestData(locationId),
                 onBegin: () => { return getItemsBegin() },
                 onSuccess: (response) => {
                     return getItemsSuccess(response.response);
@@ -35,10 +34,4 @@ export function getItemsByLocation(locationId) {
             }
         });
     }
-}
-
-function requestData(locationId) {
-    return ({
-        Id: locationId
-    })
 }

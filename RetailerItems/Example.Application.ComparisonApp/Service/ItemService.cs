@@ -51,8 +51,16 @@ namespace Example.Application.ComparisonApp.Service
                     .Include(retailer => retailer.RetailerItems)
                     .ThenInclude(retailerItems => retailerItems.Item)
                     .FirstOrDefault(p => p.Id == location.RetailerId);
-                items.AddRange(resultingItems.RetailerItems.Select(p => p.Item));
-
+                items.AddRange(resultingItems.RetailerItems.Select(p => new Item
+                    {
+                        Colour = p.Item.Colour,
+                        Cost = p.Item.Cost,
+                        Id = p.Item.Id,
+                        Name = p.Item.Name,
+                        Size = p.Item.Size,
+                        InStock = p.Item.InStock
+                    })
+                );
             }
             
             return new ServiceResponse(items, true);
