@@ -14,28 +14,10 @@ namespace Example.Persistence
             using (var context = new RetailDbContext(
                 serviceProvider.GetRequiredService<DbContextOptions<RetailDbContext>>()))
             {
-                if (context.Cities.Any())
+                if (context.Locations.Any())
                 {
                     return;   
                 }
-
-                context.Cities.AddRange(
-                    new City
-                    {
-                        Id = 1,
-                        Name = "CPT"
-                    },
-                    new City
-                    {
-                        Id = 2,
-                        Name = "JHB"
-                    },
-                    new City
-                    {
-                        Id = 3,
-                        Name = "PTA"
-                    }
-                );
 
                 var items = new[]
                 {
@@ -65,6 +47,15 @@ namespace Example.Persistence
                         Cost = 350.00M,
                         Size = "S",
                         InStock = false
+                    },
+                    new Item
+                    {
+                        Id = 4,
+                        Name = "Tie",
+                        Colour = "Purple",
+                        Cost = 250.00M,
+                        Size = "M",
+                        InStock = true
                     }
                 };
 
@@ -98,7 +89,31 @@ namespace Example.Persistence
                         WebsiteUrl = "https://www.cottonon.com"
                     }
                 };
-                
+
+
+                var locations = new[]
+                {
+                    new Location
+                    {
+                        Id = 1,
+                        Name = "CPT"
+                    },
+                    new Location
+                    {
+                        Id = 2,
+                        Name = "JHB"
+                    },
+                    new Location
+                    {
+                        Id = 3,
+                        Name = "PTA"
+                    },
+                    new Location
+                    {
+                        Id = 4,
+                        Name = "MZB"
+                    }
+                };
                 context.AddRange(
                        new RetailerItem {Retailer = retailers[0], Item = items[0]},
                        new RetailerItem {Retailer = retailers[0], Item = items[1]},
@@ -106,7 +121,19 @@ namespace Example.Persistence
                        new RetailerItem {Retailer = retailers[1], Item = items[1]},
                        new RetailerItem {Retailer = retailers[1], Item = items[2]},
                        new RetailerItem {Retailer = retailers[2], Item = items[0]},
-                       new RetailerItem {Retailer = retailers[2], Item = items[2]}
+                       new RetailerItem {Retailer = retailers[2], Item = items[2]},
+                       new RetailerItem {Retailer = retailers[2], Item = items[3]}
+                );
+                context.AddRange(
+                    new RetailerLocation{Retailer = retailers[0], Location = locations[0]},
+                    new RetailerLocation{Retailer = retailers[0], Location = locations[1]},
+                    new RetailerLocation{Retailer = retailers[0], Location = locations[2]},
+                    new RetailerLocation{Retailer = retailers[0], Location = locations[3]},
+                    new RetailerLocation{Retailer = retailers[1], Location = locations[2]},
+                    new RetailerLocation{Retailer = retailers[1], Location = locations[3]},
+                    new RetailerLocation{Retailer = retailers[2], Location = locations[0]},
+                    new RetailerLocation{Retailer = retailers[2], Location = locations[1]},
+                    new RetailerLocation{Retailer = retailers[2], Location = locations[3]}
                 );
                 context.SaveChanges();
             }

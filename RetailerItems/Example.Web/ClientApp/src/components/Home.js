@@ -1,53 +1,56 @@
-import React, {useEffect} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Table from "antd/lib/table";
-import 'antd/lib/table/style/css';
-import {getRetailer} from "../actions/RetailActions/GetRetailersAction";
+import { getLocations } from "../actions/location/GetLocationsAction";
+import {Locations} from "./Locations";
+import {InitialItems, InitialLocations} from "../Models";
+import {getItemsByLocation} from "../actions/item/GetItemsByLocationAction";
+import {Items} from "./Items";
 
-const Home = props => {
+class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state =
+        {
+            locations : {
+                ...InitialLocations
+            },
+            items: {
+                ...InitialItems
+            }
+        };
+        this.props.getLocations();
+    }
 
-    useEffect(() => {
-        getRetailer("1");
-    },[]);
+    componentDidMount() {
+    }
     
-    const dataSource = [
-        {
-            key: '1',
-            name: 'T-Shirt',
-            colour: 'White'
-        },
-        {
-            key: '2',
-            name: 'Pants',
-            colour: 'Black'
-        },
-    ];
-    
-    const columns = [
-        {
-            title: "Name",
-            key: "name",
-            dataIndex: "name",
-            width: "50%"
-        },
-        {
-            title: "Colour",
-            key: "colour",
-            dataIndex: "colour",
-            width: "50%"
-        }
-    ];
-    return (
-        <Table columns={columns} dataSource={dataSource}/>
-    );
+    handleOnChange(key) {
+        this.props.getItemsByLocation(key);
+    }
 
-};
+    render() {
+        return (
+            <div>
+                <Locations locations={this.props.locations} handleOnChange={this.handleOnChange}/>
+                
+                <Items items={this.props.items}/>
+            </div>
+        );
+    }
+}
+
 
 const mapDispatchToProps = {
-    // getRetailer
+    getLocations,
+    getItemsByLocation
 };
 
+const mapStateToProps = (state) => ({
+    locations: state.locationsState.locations,
+    items: state.itemsState.items
+});
+
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(Home);

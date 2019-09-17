@@ -7,7 +7,7 @@ namespace Example.Persistence
     {
         public DbSet<Retailer> Retailers { get; set; }
         public DbSet<Item> Items { get; set; }
-        public DbSet<City> Cities { get; set; }
+        public DbSet<Location> Locations { get; set; }
         
         public RetailDbContext(DbContextOptions options)
             : base(options)
@@ -29,6 +29,19 @@ namespace Example.Persistence
             builder.Entity<RetailerItem>()
                 .HasOne(pt => pt.Retailer)
                 .WithMany(t => t.RetailerItems)
+                .HasForeignKey(pt => pt.RetailerId);
+            
+            builder.Entity<RetailerLocation>()
+                .HasKey(pt => new { pt.LocationId, pt.RetailerId });
+
+            builder.Entity<RetailerLocation>()
+                .HasOne(pt => pt.Location)
+                .WithMany(p => p.RetailerLocations)
+                .HasForeignKey(pt => pt.LocationId);
+
+            builder.Entity<RetailerLocation>()
+                .HasOne(pt => pt.Retailer)
+                .WithMany(t => t.RetailerLocations)
                 .HasForeignKey(pt => pt.RetailerId);
         }
         
