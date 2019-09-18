@@ -19,6 +19,7 @@
         <Content Remove="$(SpaRoot)**" />
         <Content Include="ClientApp\src\actions\actionTypes.js" />
         <Content Include="ClientApp\src\actions\api\api.js" />
+        <Content Include="ClientApp\src\actions\item\AddItemAction.js" />
         <Content Include="ClientApp\src\actions\item\GetItemsByLocationAction.js" />
         <Content Include="ClientApp\src\actions\location\GetLocationsAction.js" />
         <Content Include="ClientApp\src\actions\RetailActions\GetRetailersAction.js" />

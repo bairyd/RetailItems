@@ -74,7 +74,8 @@ namespace Example.Application.ComparisonApp.Service
 
         public ServiceResponse AddItem(ServiceRequest request)
         {
-            var result = _dbContext.Items.Add(new Item {Id = 5, Name = "Tie", Colour = "Green", Cost = 150, Size = "Skinny", InStock = true});;
+            var itemRequest = request.Request as Item;
+            var result = _dbContext.Items.Add(itemRequest);;
             _dbContext.SaveChanges();
             return new ServiceResponse(result, true);
         }

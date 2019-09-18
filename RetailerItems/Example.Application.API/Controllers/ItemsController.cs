@@ -1,4 +1,5 @@
-﻿using Example.Domain.Model.Response;
+﻿using Example.Domain.Model.Request;
+using Example.Domain.Model.Response;
 using Example.Domain.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,8 +30,13 @@ namespace Example.Application.API.Controllers
         }
 
         [HttpPost]
-        public void SaveItem([FromBody] string value)
+        public void SaveItem([FromBody] dynamic item)
         {
+            var request = new ServiceRequest
+            {
+                Request = item
+            };
+            _itemService.AddItem(request);
         }
 
         [HttpPut("{id}")]
